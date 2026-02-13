@@ -1,0 +1,66 @@
+<?php
+
+namespace DummyNamespace;
+
+use Mreycode\LegacyMigrator\AbstractLegacyMigrator;
+use Illuminate\Support\Facades\DB;
+
+class DummyClass extends AbstractLegacyMigrator
+{
+
+    // Optionally specify the migration order
+    protected $queueIndex = 1;
+    
+    /**
+     * Fetch and prepare data to migrate from the source.
+     */
+    public function sourceData()
+    {
+        return collect([]);
+    }
+
+    /**
+     * Perform the migration using the source data.
+     */
+    public function handle($params = null)
+    {
+
+    }
+
+    /**
+     * Build options such as offset and limit for batching.
+     */
+    protected function buildOptions($params = [])
+    {
+        $offset = isset($params['offset']) ? ($params['offset'] + $params['limit']) : 0;
+        $limit = $params['limit'] ?? 500;
+        return [
+            'offset' => $offset,
+            'limit' => $limit
+        ];
+    }
+
+    /**
+     * Transform source data to the desired format.
+     */
+    protected function transformSourceData()
+    {
+        return json_decode(json_encode($this->sourceData()->toArray()), true);
+    }
+
+    /**
+     * Return the total number of records to migrate from the source.
+     */
+    protected function totalSize()
+    {
+        return 0;
+    }
+
+    /**
+     * Return the number of records already migrated.
+     */
+    protected function actualMigrated()
+    {
+        return 0;
+    }
+}

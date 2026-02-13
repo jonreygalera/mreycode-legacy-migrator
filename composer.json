@@ -1,0 +1,74 @@
+{
+  "name": "mreycode/legacy-migrator",
+  "description": "A robust Laravel package for seamless legacy database migrations with batch processing and resumable operations.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jon Rey Galera",
+      "email": "jonreygalera@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "illuminate/bus": "^11.0|^12.0",
+    "illuminate/console": "^11.0|^12.0",
+    "illuminate/database": "^11.0|^12.0",
+    "illuminate/support": "^11.0|^12.0"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.14",
+    "mockery/mockery": "^1.6",
+    "orchestra/testbench": "^9.0|^10.0",
+    "pestphp/pest": "^2.34|^3.0",
+    "pestphp/pest-plugin-laravel": "^2.3|^3.0",
+    "phpstan/phpstan": "^1.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mreycode\\LegacyMigrator\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mreycode\\LegacyMigrator\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage",
+    "format": "vendor/bin/pint",
+    "analyse": "vendor/bin/phpstan analyse"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Mreycode\\LegacyMigrator\\LegacyMigratorServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "php-http/discovery": true
+    }
+  },
+  "keywords": [
+    "laravel",
+    "migration",
+    "legacy",
+    "database",
+    "batch-processing",
+    "resumable",
+    "queue",
+    "worker"
+  ],
+  "support": {
+    "issues": "https://github.com/jonreygalera/mreycode-legacy-migrator/issues",
+    "source": "https://github.com/jonreygalera/mreycode-legacy-migrator"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
